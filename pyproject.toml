@@ -16,7 +16,7 @@ api = [
     "uvicorn>=0.29",
 ]
 telemetry = [
-    "gozerai-telemetry>=0.1.0",
+    "gozerai-telemetry @ git+https://github.com/GozerAI/gozerai-telemetry.git",
 ]
 dev = [
     "pytest>=8.0",

@@ -1,10 +1,11 @@
-"""This module requires a commercial license.
+"""
+Enterprise module -- requires a Pro or Enterprise license.
 
-Visit https://gozerai.com/pricing for Pro and Enterprise tier details.
-Set VINZY_LICENSE_KEY to unlock licensed features.
+This module is available in the commercial edition.
+Visit https://gozerai.com/pricing for licensing options.
 """
 
 raise ImportError(
-    f"{__name__} requires a commercial Taskpilot license. "
+    "The 'taskpilot.engine' module requires a Pro or Enterprise license. "
     "Visit https://gozerai.com/pricing for details."
 )

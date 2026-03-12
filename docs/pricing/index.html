@@ -86,7 +86,7 @@ footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.85rem;b
   </div>
   <div class="card featured">
     <div class="card-tier">Pro &mdash; Bundle</div>
-    <div class="card-price"><a href="https://gozerai.com/pricing" style="color:var(--accent);font-size:1rem">See pricing</a></div>
+    <div class="card-price" data-monthly="499" data-yearly="4990">$<span class="price-value">499</span><span>/mo</span></div>
     <div class="card-cycle cycle-text">Billed monthly</div>
     <ul>
       <li>Workflow orchestration</li>
@@ -103,7 +103,7 @@ footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.85rem;b
   </div>
   <div class="card">
     <div class="card-tier">Enterprise &mdash; Bundle</div>
-    <div class="card-price"><a href="https://gozerai.com/pricing" style="color:var(--accent);font-size:1rem">See pricing</a></div>
+    <div class="card-price" data-monthly="1999" data-yearly="19990">$<span class="price-value">1,999</span><span>/mo</span></div>
     <div class="card-cycle cycle-text">Billed monthly</div>
     <ul>
       <li>Priority scheduling</li>
@@ -157,7 +157,7 @@ footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.85rem;b
 <footer>&copy; 2026 GozerAI. All rights reserved. Contact: support@gozerai.com</footer>
 <script>
 (function(){
-  const CONFIG={serverUrl:"",productCode:"STD",prices:{}};
+  const CONFIG={serverUrl:"",productCode:"STD",prices:{pro:{monthly:499,yearly:4990},enterprise:{monthly:1999,yearly:19990}}};
   let yearly=false;
   const toggle=document.getElementById("billingToggle"),labels=document.querySelectorAll(".toggle-label"),priceEls=document.querySelectorAll(".card-price[data-monthly]"),cycleEls=document.querySelectorAll(".cycle-text"),buttons=document.querySelectorAll("[data-tier]");
   function update(){toggle.classList.toggle("yearly",yearly);toggle.setAttribute("aria-checked",yearly);labels.forEach(l=>l.classList.toggle("active",(l.dataset.cycle==="yearly")===yearly));priceEls.forEach(el=>{const v=yearly?el.dataset.yearly:el.dataset.monthly;el.querySelector(".price-value").textContent=Number(v).toLocaleString();el.querySelector("span:last-child").textContent=yearly?"/yr":"/mo"});cycleEls.forEach(el=>el.textContent=yearly?"Billed yearly":"Billed monthly")}
