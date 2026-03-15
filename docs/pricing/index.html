@@ -29,7 +29,7 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 .card-price{font-size:2.5rem;font-weight:800;margin-bottom:.25rem}.card-price span{font-size:1rem;font-weight:400;color:var(--muted)}
 .card-cycle{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
 .card ul{list-style:none;flex:1;margin-bottom:1.5rem}
-.card li{padding:.4rem 0;padding-left:1.5rem;position:relative;font-size:.925rem;color:var(--muted)}.card li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:700}
+.card li{padding:.4rem 0;padding-left:1.5rem;position:relative;font-size:.925rem;color:var(--muted)}.card li::before{content:"¹3";position:absolute;left:0;color:var(--green);font-weight:700}
 .card li.section-label{color:var(--accent);font-weight:600;padding-left:0;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-top:.5rem}
 .card li.section-label::before{content:""}
 .btn{display:block;text-align:center;padding:.75rem 1.5rem;border-radius:8px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;transition:background .2s}
@@ -56,14 +56,14 @@ footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.85rem;b
 <nav class="nav">
   <div class="nav-brand">Taskpilot</div>
   <div class="nav-links">
-    <a href="https://github.com/GozerAI/taskpilot">GitHub</a>
-    <a href="https://github.com/GozerAI/taskpilot#readme">Docs</a>
+    <a href="https://github.com/chrisarseno/taskpilot">GitHub</a>
+    <a href="https://github.com/chrisarseno/taskpilot#readme">Docs</a>
   </div>
 </nav>
 <section class="hero">
   <h1>Taskpilot Pricing</h1>
   <p class="tagline">Autonomous task scheduling, workflow orchestration, and priority queuing</p>
-  <p class="oss">Standalone Bundle &mdash; Open-source under AGPL-3.0</p>
+  <p class="oss">GozerAI Platform &mdash; Open-source under AGPL-3.0</p>
 </section>
 <div class="toggle-wrap">
   <span class="toggle-label active" data-cycle="monthly">Monthly</span>
@@ -82,87 +82,77 @@ footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.85rem;b
       <li>CLI tooling</li>
       <li>Community support</li>
     </ul>
-    <a href="https://github.com/GozerAI/taskpilot" class="btn btn-outline">Get Started</a>
+    <a href="https://github.com/chrisarseno/taskpilot" class="btn btn-outline">Get Started</a>
   </div>
   <div class="card featured">
-    <div class="card-tier">Pro &mdash; Bundle</div>
-    <div class="card-price" data-monthly="499" data-yearly="4990">$<span class="price-value">499</span><span>/mo</span></div>
+    <div class="card-tier">Pro</div>
+    <div class="card-price" data-monthly="29" data-yearly="290">$<span class="price-value">29</span><span>/mo</span></div>
     <div class="card-cycle cycle-text">Billed monthly</div>
     <ul>
       <li>Workflow orchestration</li>
       <li>DAG-based pipelines</li>
       <li>SQLite persistence</li>
-      <li class="section-label">Also includes</li>
-      <li>Trendscope &mdash; advanced analytics</li>
-      <li>Shopforge &mdash; multi-storefront pricing</li>
-      <li>Brandguard &mdash; custom rulesets</li>
-      <li>Claude Swarm &mdash; advanced routing</li>
-      <li>Email support</li>
+      <li class="section-label">Platform access</li>
+      <li>Full platform: $99/mo &mdash; all 10 products</li>
+      <li>1,500 AI credits included</li>
+      <li>Priority support</li>
     </ul>
     <button class="btn btn-primary" data-tier="pro">Subscribe</button>
   </div>
   <div class="card">
-    <div class="card-tier">Enterprise &mdash; Bundle</div>
-    <div class="card-price" data-monthly="1999" data-yearly="19990">$<span class="price-value">1,999</span><span>/mo</span></div>
+    <div class="card-tier">Growth</div>
+    <div class="card-price" data-monthly="79" data-yearly="790">$<span class="price-value">79</span><span>/mo</span></div>
     <div class="card-cycle cycle-text">Billed monthly</div>
     <ul>
       <li>Priority scheduling</li>
       <li>Real-time rebalancing</li>
       <li>Custom executors</li>
-      <li class="section-label">Also includes</li>
-      <li>Trendscope &mdash; intelligence correlation</li>
-      <li>Shopforge &mdash; margin optimization</li>
-      <li>Brandguard &mdash; asset management</li>
-      <li>Claude Swarm &mdash; fleet orchestration</li>
-      <li>Priority support &amp; SLA</li>
+      <li class="section-label">Platform access</li>
+      <li>Full platform: $349/mo &mdash; all 10 products</li>
+      <li>6,000 AI credits included</li>
+      <li>Dedicated support</li>
     </ul>
-    <button class="btn btn-primary" data-tier="enterprise">Subscribe</button>
+    <button class="btn btn-primary" data-tier="growth">Subscribe</button>
   </div>
 </div>
 <div class="callout">
   <div class="callout-box">
-    <h3>One license. Five tools.</h3>
-    <p>Every bundle license unlocks Pro or Enterprise features across Taskpilot, Trendscope, Shopforge, Brandguard, and Claude Swarm.</p>
+    <h3>Scale with bundles</h3>
+    <p>Buy individual products from $29/mo or get the full platform from $99/mo with all 10 products. Themed bundles from $49/mo.</p>
   </div>
 </div>
 <section class="section">
   <h2>Feature Comparison</h2>
   <table>
-    <thead><tr><th>Feature</th><th>Community</th><th>Pro</th><th>Enterprise</th></tr></thead>
+    <thead><tr><th>Feature</th><th>Community</th><th>Pro</th><th>Growth</th></tr></thead>
     <tbody>
       <tr><td>Basic task scheduling</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
       <tr><td>Workflow orchestration</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
       <tr><td>DAG-based pipelines</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
       <tr><td>Priority scheduling</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Trendscope advanced</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Shopforge advanced</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Brandguard advanced</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Claude Swarm advanced</td><td class="dash">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Trendscope enterprise</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Shopforge enterprise</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Brandguard enterprise</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
-      <tr><td>Claude Swarm enterprise</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
+      <tr><td>Real-time rebalancing</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
+      <tr><td>Custom executors</td><td class="dash">&mdash;</td><td class="dash">&mdash;</td><td class="check">&#10003;</td></tr>
     </tbody>
   </table>
 </section>
 <section class="faq">
   <h2>Frequently Asked Questions</h2>
   <details><summary>Can I use Taskpilot for free?</summary><p>Yes. The Community tier is free forever under the AGPL-3.0 license. It includes basic task scheduling and CLI tooling.</p></details>
-  <details><summary>What is the Standalone Bundle?</summary><p>One license covers five tools: Taskpilot, Trendscope, Shopforge, Brandguard, and Claude Swarm. Pro unlocks advanced features across all five; Enterprise unlocks everything.</p></details>
+  <details><summary>What is the Standalone Bundle?</summary><p>Each product can be purchased individually ($29/mo Pro, $79/mo Growth) or as part of the GozerAI Platform ($99-$899/mo) which includes all 10 products with shared AI credits. Themed bundles are also available from $49/mo.</p></details>
   <details><summary>Can I switch tiers at any time?</summary><p>Yes. Upgrades take effect immediately with prorated billing. Downgrades apply at the next billing cycle.</p></details>
   <details><summary>Do you offer annual discounts?</summary><p>Yes. Annual billing saves approximately 17% compared to monthly billing.</p></details>
-  <details><summary>What payment methods do you accept?</summary><p>We accept all major credit cards via Stripe. Enterprise customers can pay by invoice.</p></details>
-  <details><summary>Is there a self-hosted option?</summary><p>All five tools are open-source under AGPL-3.0. You can self-host with Community features. Pro and Enterprise features require a valid license key.</p></details>
+  <details><summary>What payment methods do you accept?</summary><p>We accept all major credit cards via Stripe. Growth customers can pay by invoice.</p></details>
+  <details><summary>Is there a self-hosted option?</summary><p>All products are open-source under AGPL-3.0. You can self-host with Community features. Pro and Growth features require a valid license key.</p></details>
 </section>
 <footer>&copy; 2026 GozerAI. All rights reserved. Contact: support@gozerai.com</footer>
 <script>
 (function(){
-  const CONFIG={serverUrl:"",productCode:"STD",prices:{pro:{monthly:499,yearly:4990},enterprise:{monthly:1999,yearly:19990}}};
+  const CONFIG={serverUrl:"https://api.gozerai.com/v1/provisioning",productCode:"STD",prices:{pro:{monthly:29,yearly:290},growth:{monthly:79,yearly:790}}};
   let yearly=false;
   const toggle=document.getElementById("billingToggle"),labels=document.querySelectorAll(".toggle-label"),priceEls=document.querySelectorAll(".card-price[data-monthly]"),cycleEls=document.querySelectorAll(".cycle-text"),buttons=document.querySelectorAll("[data-tier]");
   function update(){toggle.classList.toggle("yearly",yearly);toggle.setAttribute("aria-checked",yearly);labels.forEach(l=>l.classList.toggle("active",(l.dataset.cycle==="yearly")===yearly));priceEls.forEach(el=>{const v=yearly?el.dataset.yearly:el.dataset.monthly;el.querySelector(".price-value").textContent=Number(v).toLocaleString();el.querySelector("span:last-child").textContent=yearly?"/yr":"/mo"});cycleEls.forEach(el=>el.textContent=yearly?"Billed yearly":"Billed monthly")}
   toggle.addEventListener("click",()=>{yearly=!yearly;update()});toggle.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();yearly=!yearly;update()}});labels.forEach(l=>l.addEventListener("click",()=>{yearly=l.dataset.cycle==="yearly";update()}));
-  buttons.forEach(btn=>{btn.addEventListener("click",async()=>{const tier=btn.dataset.tier,cycle=yearly?"yearly":"monthly";if(!CONFIG.serverUrl){alert("Checkout server not configured.");return}btn.disabled=true;btn.textContent="Redirecting\u2026";try{const r=await fetch(CONFIG.serverUrl+"/checkout/create",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product_code:CONFIG.productCode,tier,billing_cycle:cycle,success_url:location.href+"?success=1",cancel_url:location.href+"?canceled=1"})});if(!r.ok)throw new Error("Server returned "+r.status);const d=await r.json();location.href=d.url}catch(e){alert("Checkout failed: "+e.message);btn.disabled=false;btn.textContent="Subscribe"}})});
+  buttons.forEach(btn=>{btn.addEventListener("click",async()=>{const tier=btn.dataset.tier,cycle=yearly?"yearly":"monthly";if(!CONFIG.serverUrl){alert("Checkout server not configured.");return}btn.disabled=true;btn.textContent="Redirecting…";try{const r=await fetch(CONFIG.serverUrl+"/checkout/create",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product_code:CONFIG.productCode,tier,billing_cycle:cycle,success_url:location.href+"?success=1",cancel_url:location.href+"?canceled=1"})});if(!r.ok)throw new Error("Server returned "+r.status);const d=await r.json();location.href=d.url}catch(e){alert("Checkout failed: "+e.message);btn.disabled=false;btn.textContent="Subscribe"}})});
 })();
 </script>
 </body>

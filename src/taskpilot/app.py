@@ -3,14 +3,22 @@
 import logging
 import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Optional
 
 import httpx
 from fastapi import FastAPI, Depends, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 from pydantic import BaseModel
 
 from taskpilot.service import SchedulerService
+
+FRONTEND_DIR = Path(__file__).parent.parent.parent.parent / "frontend"
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +41,10 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="TaskPilot", version="0.1.0", lifespan=lifespan)
 
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
@@ -40,6 +52,11 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Content-Type", "Authorization"],
 )
+
+# Mount static files and serve dashboard if frontend dir exists
+_static_dir = FRONTEND_DIR / "static"
+if _static_dir.exists():
+    app.mount("/static", StaticFiles(directory=str(_static_dir)), name="static")
 
 
 # ── Auth dependency ────────────────────────────────────────────────────────────
@@ -121,6 +138,81 @@ class AddWorkflowStepRequest(BaseModel):
     handler_params: Optional[dict] = None
     continue_on_failure: bool = False
     timeout_seconds: Optional[int] = None
+
+
+# ── Frontend pages ─────────────────────────────────────────────────────────────
+
+@app.get("/", include_in_schema=False)
+async def landing():
+    """Serve the landing page."""
+    page = FRONTEND_DIR / "landing.html"
+    if page.exists():
+        return FileResponse(str(page))
+    return HTMLResponse("<h1>Taskpilot</h1><p>Landing page not found.</p>", status_code=503)
+
+
+@app.get("/dashboard", include_in_schema=False)
+async def dashboard():
+    """Serve the single-page dashboard."""
+    index = FRONTEND_DIR / "index.html"
+    if index.exists():
+        return FileResponse(str(index))
+    return HTMLResponse("<h1>Dashboard not built</h1><p>Run the frontend build step.</p>", status_code=503)
+
+
+# ── Auth proxy ─────────────────────────────────────────────────────────────────
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+class RegisterRequest(BaseModel):
+    name: str
+    email: str
+    password: str
+
+
+@app.post("/api/auth/login")
+async def auth_login(body: LoginRequest):
+    """Proxy login to Zuultimate and return access token."""
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            resp = await client.post(
+                f"{ZUULTIMATE_BASE_URL}/v1/identity/auth/login",
+                json={"email": body.email, "password": body.password},
+            )
+    except httpx.RequestError as e:
+        logger.error("Zuultimate unreachable during login: %s", e)
+        raise HTTPException(status_code=503, detail="Auth service unavailable")
+
+    if resp.status_code == 401:
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    if resp.status_code != 200:
+        raise HTTPException(status_code=resp.status_code, detail="Auth service error")
+
+    return resp.json()
+
+
+@app.post("/api/auth/register", status_code=201)
+async def auth_register(body: RegisterRequest):
+    """Proxy registration to Zuultimate."""
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            resp = await client.post(
+                f"{ZUULTIMATE_BASE_URL}/v1/identity/auth/register",
+                json={"name": body.name, "email": body.email, "password": body.password},
+            )
+    except httpx.RequestError as e:
+        logger.error("Zuultimate unreachable during register: %s", e)
+        raise HTTPException(status_code=503, detail="Auth service unavailable")
+
+    if resp.status_code == 409:
+        raise HTTPException(status_code=409, detail="Email already registered")
+    if resp.status_code not in (200, 201):
+        raise HTTPException(status_code=resp.status_code, detail="Registration failed")
+
+    return resp.json()
 
 
 # ── Basic endpoints (taskpilot:basic) ──────────────────────────────────────────

@@ -30,10 +30,10 @@ PRICING_URL = "https://gozerai.com/pricing"
 
 # Feature flag → human-readable name + required tier
 _FEATURE_TIER_MAP = {
-    # Pro (Tier 2)
+    # Pro — Single $29/mo or Platform $99/mo
     "std.taskpilot.advanced": ("Taskpilot Advanced Workflows", "Pro"),
-    # Enterprise (Tier 1)
-    "std.taskpilot.enterprise": ("Taskpilot Enterprise Reports", "Enterprise"),
+    # Growth — Single $79/mo or Platform $349/mo
+    "std.taskpilot.enterprise": ("Taskpilot Enterprise Reports", "Growth"),
 }
 
 

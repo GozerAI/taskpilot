@@ -19,25 +19,17 @@ from taskpilot.core import (
     TaskStatus,
     TASK_TEMPLATES,
 )
-try:
-    from taskpilot.engine import SchedulerEngine
-    _HAS_ENGINE = True
-except ImportError:
-    _HAS_ENGINE = False
-try:
-    from taskpilot.workflows import (
-        WorkflowDefinition,
-        WorkflowExecution,
-        WorkflowExecutor,
-        WorkflowStep,
-        WorkflowStatus,
-        create_daily_operations_workflow,
-        create_pricing_optimization_workflow,
-        create_brand_audit_workflow,
-    )
-    _HAS_WORKFLOWS = True
-except ImportError:
-    _HAS_WORKFLOWS = False
+from taskpilot.engine import SchedulerEngine
+from taskpilot.workflows import (
+    WorkflowDefinition,
+    WorkflowExecution,
+    WorkflowExecutor,
+    WorkflowStep,
+    WorkflowStatus,
+    create_daily_operations_workflow,
+    create_pricing_optimization_workflow,
+    create_brand_audit_workflow,
+)
 from taskpilot.licensing import license_gate
 
 logger = logging.getLogger(__name__)
@@ -89,8 +81,8 @@ class SchedulerService:
 
     def __init__(self, storage_path: Optional[str] = None):
         """Initialize the scheduler service."""
-        self._engine = SchedulerEngine() if _HAS_ENGINE else None
-        self._workflow_executor = WorkflowExecutor(storage_path=storage_path) if _HAS_WORKFLOWS else None
+        self._engine = SchedulerEngine()
+        self._workflow_executor = WorkflowExecutor(storage_path=storage_path)
         self._handlers: Dict[str, Callable] = {}
         self._initialized = False
 

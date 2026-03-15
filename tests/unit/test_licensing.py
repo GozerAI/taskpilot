@@ -40,7 +40,7 @@ class TestCommunityMode:
 
     def test_gate_enterprise_raises(self):
         gate = _make_gate(key="")
-        with pytest.raises(PermissionError, match="Enterprise license"):
+        with pytest.raises(PermissionError, match="Growth license"):
             gate.gate("std.taskpilot.enterprise")
 
     def test_error_message_contains_pricing_url(self):
