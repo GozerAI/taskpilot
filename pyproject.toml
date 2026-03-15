@@ -17,7 +17,7 @@ api = [
     "slowapi>=0.1.9",
 ]
 telemetry = [
-    "gozerai-telemetry @ git+https://github.com/chrisarseno/gozerai-telemetry.git",
+    "gozerai-telemetry @ git+https://github.com/GozerAI/gozerai-telemetry.git",
 ]
 dev = [
     "pytest>=8.0",
