@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskPilot Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- Auth view -->
+<div id="auth-view">
+  <div class="auth-box">
+    <div class="auth-logo">
+      <div class="auth-logo-icon" aria-hidden="true">&#9881;</div>
+      <span class="auth-logo-text">TaskPilot</span>
+    </div>
+
+    <div class="auth-tabs" role="tablist" aria-label="Authentication">
+      <button class="auth-tab active" data-tab="login" role="tab" aria-selected="true" aria-controls="login-form-wrap">Sign in</button>
+      <button class="auth-tab" data-tab="register" role="tab" aria-selected="false" aria-controls="register-form-wrap">Create account</button>
+    </div>
+
+    <!-- Login -->
+    <div id="login-form-wrap" role="tabpanel">
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-input" id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div id="login-error" class="inline-error hidden" role="alert" aria-live="polite"></div>
+        <button type="submit" class="btn btn-primary" data-testid="login-btn">Sign in</button>
+      </form>
+    </div>
+
+    <!-- Register -->
+    <div id="register-form-wrap" class="hidden" role="tabpanel">
+      <form id="register-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="reg_name">Full name</label>
+          <input class="form-input" id="reg_name" name="reg_name" type="text" autocomplete="name" required placeholder="Alex Chen">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg_email">Email</label>
+          <input class="form-input" id="reg_email" name="reg_email" type="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg_password">Password</label>
+          <input class="form-input" id="reg_password" name="reg_password" type="password" autocomplete="new-password" required minlength="8" placeholder="Minimum 8 characters">
+        </div>
+        <div id="register-error" class="inline-error hidden" role="alert" aria-live="polite"></div>
+        <button type="submit" class="btn btn-primary" data-testid="register-btn">Create account</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- App view -->
+<div id="app-view" class="hidden">
+  <!-- Sidebar -->
+  <nav class="sidebar" aria-label="Main navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-logo-icon" aria-hidden="true">&#9881;</div>
+      <span class="sidebar-logo-text">TaskPilot</span>
+    </div>
+
+    <div class="sidebar-nav">
+      <button class="nav-item active" data-page="tasks" data-testid="nav-tasks">
+        <span class="nav-icon" aria-hidden="true">&#9776;</span> Tasks
+      </button>
+      <button class="nav-item" data-page="schedules" data-testid="nav-schedules">
+        <span class="nav-icon" aria-hidden="true">&#128197;</span> Schedules
+      </button>
+      <button class="nav-item" data-page="workflows" data-testid="nav-workflows">
+        <span class="nav-icon" aria-hidden="true">&#128279;</span> Workflows
+      </button>
+      <button class="nav-item" data-page="history" data-testid="nav-history">
+        <span class="nav-icon" aria-hidden="true">&#128336;</span> History
+      </button>
+      <button class="nav-item" data-page="settings" data-testid="nav-settings">
+        <span class="nav-icon" aria-hidden="true">&#9881;</span> Settings
+      </button>
+      <button class="nav-item" data-page="billing" data-testid="nav-billing">
+        <span class="nav-icon" aria-hidden="true">&#128176;</span> Billing
+      </button>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="user-avatar-display" aria-hidden="true">U</div>
+        <span class="user-email" id="user-email-display"></span>
+        <button class="btn-logout" id="logout-btn" aria-label="Sign out" title="Sign out">&#10005;</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="main-content" id="page-content" aria-live="polite" aria-atomic="false">
+    <div class="page-loading"><span class="spinner" aria-hidden="true"></span> Loading...</div>
+  </main>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

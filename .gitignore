@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Runtime artifacts
+data/
+logs/
+*.db
+*.sqlite
+*.sqlite3
+
+# Coverage
+.coverage
+htmlcov/
+coverage.xml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+
+# Windows artifacts
+nul
+*.exe
+*.dll
+*.bak
+
+# Temporary / tool-generated files
+tmpclaude-*
+
+# Node
+node_modules/
